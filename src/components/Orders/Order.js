@@ -1,15 +1,26 @@
 
 
-import React from 'react';
-
-const Order = ({name,qty,weight,price,imageURL,date}) => {
+const center_item = {
+    display:'flex',
+    alignItems:'center'
+}
+const Order = ({ name, qty, weight, price, imageURL, date }) => {
     return (
-        <div>
-            this is order page
-            {
-                <img src={imageURL} alt="" style={{ width:'200px',height:'200px'}}/>
-            }
-                {qty} {weight} {price} {name} {date}
+        <div className='container'>
+            <div className="row shadow my-3">
+                <div className="col">
+                    {
+                        <img src={imageURL} alt="" style={{ width: '100px', height: '100px' }} />
+                    }
+                </div>
+                <div className="col d-flex align-items-center" > <strong> {name} </strong> </div>
+                <div className="col d-flex align-items-center"> Qty: {qty} </div>
+                <div className="col d-flex align-items-center"> {weight} </div>
+                <div className="col d-flex align-items-center"> ${price} </div>               
+                <div className="col d-flex align-items-center"> {date} </div>
+            </div>
+
+               
 
         </div>
     );

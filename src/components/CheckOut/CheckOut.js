@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import { UserContext } from "../../App";
 
 
@@ -8,7 +9,7 @@ const CheckOut = () => {
     const { id } = useParams();
     const [productCheckOut, setProductCheckOut] = useState({})
     const { name, weight, price } = productCheckOut;
-    const [loggedInUser, setLoggedInUser] =  useContext(UserContext)
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
 
     useEffect(() => {
         fetch(`https://limitless-escarpment-38206.herokuapp.com/checkOut/${id}`)
@@ -23,10 +24,10 @@ const CheckOut = () => {
 
         const order = {
             ...productCheckOut,
-            qty:1,
+            qty: 1,
             email: loggedInUser.email,
             date: new Date().toLocaleDateString()
-            
+
         }
 
         const url = `https://limitless-escarpment-38206.herokuapp.com/addOrder`
@@ -37,16 +38,16 @@ const CheckOut = () => {
             },
             body: JSON.stringify(order)
         })
-        .then(res => console.log('server side response', res))
-        .catch(err => console.log(err) )
+            .then(res => console.log('server side response', res))
+            .catch(err => console.log(err))
     }
 
     return (
-        <div className='container'>
+        <div className='container mt-4'>
             {/* {
                 hasChecked && <div> */}
-            <h4> Check Out</h4>
-            <table className="table table-hover">
+            <h4 className='text-start'> Check Out</h4>
+            <table className="table table-hover shadow-lg">
                 <thead>
                     <tr>
                         <th scope="col">Description</th>
@@ -71,7 +72,9 @@ const CheckOut = () => {
                 </tbody>
             </table>
             <div className="d-flex justify-content-end">
-                <button className="btn btn-success" onClick={handleOrder}>Checkout </button>
+                <Link to="/orders">
+                    <button className="btn btn-success" onClick={handleOrder}>Checkout </button>
+                </Link>
             </div>
 
         </div>

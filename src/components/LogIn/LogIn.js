@@ -7,14 +7,16 @@ import firebaseConfig from './firebase.config'
 import { useContext } from "react";
 import { UserContext } from "../../App";
 import { useHistory, useLocation } from 'react-router-dom';
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig)
-  }
-  
-  const LogIn = () => {
+}
 
-    const [loggedInUser, setLoggedInUser] =  useContext(UserContext)
+const LogIn = () => {
+
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
 
     const history = useHistory();
     const location = useLocation();
@@ -40,7 +42,7 @@ if (!firebase.apps.length) {
                 setLoggedInUser(signedInUser)
                 history.replace(from);
                 console.log(signedInUser)
-               
+
             }).catch((error) => {
                 const errorMessage = error.message;
                 console.log('error from google', errorMessage);
@@ -48,8 +50,10 @@ if (!firebase.apps.length) {
     }
     return (
         <div>
-            this is log in part
-            <button  onClick={() => handleSignUp(googleProvider)}  className="btn btn-success px-3">LOG IN </button>
+<h4>sign in with google </h4>
+            <button onClick={() => handleSignUp(googleProvider)} className="btn btn-outline-success px-3">
+                <FontAwesomeIcon icon={faGoogle}></FontAwesomeIcon> Log in  
+           </button>
         </div>
     );
 };

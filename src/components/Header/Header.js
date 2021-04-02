@@ -9,7 +9,7 @@ const Header = () => {
     const [loggedInUser, setLoggedInUser] =  useContext(UserContext)
 
     return (
-        <div>
+        <div className='ms-2'>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
                     <Link class="navbar-brand" to="/"> eShop</Link>

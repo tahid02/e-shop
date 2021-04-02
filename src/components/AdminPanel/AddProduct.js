@@ -17,7 +17,7 @@ const AddProduct = () => {
         const productData = {
 
             name: data.name,
-            price:data.price,
+            price: data.price,
             weight: data.weight,
             imageURL: imageURL
         };
@@ -30,7 +30,7 @@ const AddProduct = () => {
             },
             body: JSON.stringify(productData)
         })
-        .then(res => console.log('server side response', res))
+            .then(res => console.log('server side response', res))
     };
 
     const handleImageUpload = event => {
@@ -42,7 +42,7 @@ const AddProduct = () => {
         axios.post('https://api.imgbb.com/1/upload',
             imageData)
             .then(function (response) {
-                console.log( response.data.data.display_url )
+                console.log(response.data.data.display_url)
                 setIMageURL(response.data.data.display_url);
             })
             .catch(function (error) {
@@ -52,22 +52,41 @@ const AddProduct = () => {
     }
 
     return (
-        <div className='bg-primary'>
+        <div className='shadow-lg'>
 
-            <h4>this is add Product part  </h4>
+            <h5 className='my-3'> Add Product  </h5>
 
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} >
+                {/* <div className="d-flex justify-content-evenly "> */}
+                <div className="row px-4">
 
-                <input name="name" placeholder="Enter Name" ref={register} />
-                <br />
-                <input name="weight" placeholder="Enter weight" ref={register} />
-                <br />
-                <input name="price" placeholder=" Enter price" ref={register} />
-                <br />
-               
-                <input name="exampleRequired" type="file" onChange={handleImageUpload} />
-                <br />
-                <input type="submit" />
+
+                    <div className='col col-md-6 text-start '>
+                        <label htmlFor=""> Name:</label>
+                        <input name="name" placeholder="Enter Name" ref={register} />
+                    </div>
+                    <div className='col col-md-6 text-end'>
+                        <label htmlFor="">Weight: </label>
+                        <input name="weight" placeholder="Enter weight" ref={register} />
+                    </div>
+
+                    {/* </div> */}
+                    {/* <div className="d-flex justify-content-evenly my-3"> */}
+                    <div className='col col-md-6 text-start my-3'>
+                        <label htmlFor="">Price :  </label>
+                        <input name="price" placeholder=" Enter price" ref={register} />
+
+                    </div>
+                    <div className='col col-md-6 text-end my-3'>
+                        <input name="exampleRequired" type="file" onChange={handleImageUpload} />
+                    </div>
+                    {/* </div> */}
+                </div>
+
+
+                <div className="d-flex justify-content-end me-4 ">
+                    <input type="submit" value='save' className='btn btn-success'/>
+                </div>
             </form>
         </div>
     );

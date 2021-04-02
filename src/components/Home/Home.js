@@ -20,19 +20,18 @@ const Home = () => {
     }, [])
 
     return (
-        <div>
-            this is home
+        <div className='container'>
             {
                 loading ? (
 
-                    <div class=" text-center ">
-                        <div class="spinner-border text-primary" role="status">
-                            <span class="visually-hidden">Loading...</span>
+                    <div className=" text-center ">
+                        <div className="spinner-border text-primary" role="status">
+                            <span className="visually-hidden">Loading...</span>
                         </div>
                     </div>
                 ) : (
 
-                    <div className="row g-4">
+                    <div className="row g-4 mt-3" >
                         {
                             products.map(product => <Product {...product} key={product._id} />)
                         }

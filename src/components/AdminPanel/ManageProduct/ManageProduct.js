@@ -18,7 +18,7 @@ const ManageProduct = () => {
     return (
         <div className=''>
            
-
+        <h5 className='my-3'>Manage Product </h5>
             <table className="table table-hover text-start">
                 <thead>
                     <tr>

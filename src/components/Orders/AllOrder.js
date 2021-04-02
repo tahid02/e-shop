@@ -17,8 +17,9 @@ const AllOrder = () => {
         .then(data => setAllOrder(data))
     },[])
     return (
-        <div>
-            this is Orders  page
+        <div className='mt-3'>
+                        <h4>Orders </h4>
+
             {
                 allOrder.map( order => <Order {...order} /> )
             }
